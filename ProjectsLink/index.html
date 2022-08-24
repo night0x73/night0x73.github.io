@@ -8,8 +8,207 @@
 	<!-----------------------------------------------------------------------------------------------------> 
 	<h1 style="text-align:left"><font size="33"><font face="Futura">Projects.</font></font></h1>
 
+	
+	<h2 style="text-align:left"><font size="10"><font face="Futura"><i>Vehicle Inventory Management System MVC</i></font></font></h2>
+	<p1>
+	<b>Background:</b> <br>After graduating college, I started to relearn Python and Java. This project started as a Python app that ran through the IDE console and stored data in an excel spreadsheet. My desire to learn backend development and proficiency in Java led me to changing the language this app was written in. After learning about the MVC design pattern, I was able to produce the model and view components in Java, but my grasp on Controllers (HttpSerlvet specicially) wasn't so great, so I decided to learn Spring in order to make my application more robust and modular. This is by far the largest software project I've worked on as a programmer, but I hope to grow and eventually use this knowledge in the industry.
+	<br>
+	<br>
+
+<b>Abstract:</b> <br>To create a program that manages vehicle inventory data for a car dealership. This project teaches me about Java development at the enterprise level by implementing technologies offered by the Spring project. I am focusing on the Model-View-Controller design pattern with interactions between three main entities (Vehicle, CustomerAccount, FinanceRecords). As entities are added to this project, especially ones with relationships with existing ones, complexity grows at a nonlinear rate. Due to the benefits of dependency injection and the annotation-based configuration magic offered by Spring, users of this application have free control over data input.
+<br>
+<br>
+Tools/Technologies:
+	
+	<ul>
+    <li>IDE: Eclipse</li>
+    <li>Build tools: Maven</li>
+    <li>Frameworks: Spring Core, Hibernate</li>
+    <li>Database: MySQL + MySQLWorkbench, JDBC</li>
+    <li>Server: Apache Tomcat</li>
+    <li>View layer: HTML/CSS + JSP, JSTL</li>
+	</ul>
+
+<br>
+
+<b>Entities/Models:</b><br>
+
+The fields of the object contain data that is relevant to the consumer. These fields are to be stored in the database. Here, basic principles of OOP such as encapsulation with the get and set methods are employed. Because the object has so many fields, I found that using the creational builder design pattern would help simply and organize the instantiation of the vehicle object. 3/8/22 update: I've found that because Spring's dependency injection offers inversion of control, the components of the builder pattern within the Vehicle class may be unecessary.
+
+<br>
+<br>
+<b>Vehicle Fields:</b><br>
+
+year (int) mileage (int) vehicleIdNumber(String) make (String) model(String) condition(String) interiorColor(String) exteriorColor(String) titleStatus (String) drivetrainType (String) transmissionType (String) fuelType (String) price (double)
+
+<br>
+<br>
+    <b>12/30/21 update:</b><br>
+
+A user class is created. This may be refactored to 'Customer' later. This entity is used to keep track of customers who have purchased/financed a vehicle.
+
+<br>
+<br>
+    <b>3/8/22 update:</b><br>
+
+This has been refactored to 'CustomerAccounts'.<br>
+
+<b>CustomerAccount Fields:</b><br>
+
+customerId (int) Username (String) Password (String) FirstName (String) LastName (String) emailAddress (String) mailingAddress (String) phoneNumber (int) financedVehicles (FinanceRecord
+<br>
+<br>
+    <b>3/18/22 update:</b><br>
+
+A FinanceRecord class has been in the works for some time but I needed to figure out how to integrate its functionalities with Vehicle and CustomerAccount classes. One of the more challenging parts was to determine how certain fields of the FinanceRecord object would affect other internal fields simultaneously. Over time, I figured it'd be best to use an amortization formula for scheduled payments and (at this time) omit the ablity to make early payments for simplicity.
+<br>
+<br>
+<b>FinanceRecord Fields:</b><br>
+
+financeId (int) creditScore (int) termLength (int) installmentsPaid (int) condition (String) vehicleIdNumber (String) apr (double) vehiclePrice (double) downPayment (double) balance (double) monthlyPaymentAmount (double) paidOff (boolean) vehicle (Vehicle) customerAccount (CustomerAccount)
+<br>
+<br>
+    <b>Databasing:</b><br>
+
+Using jdbc as the driver connector for mySQL, it becomes possible to permanentize and update the states of the vehicle object.
+
+Here, I learned how to set up the mySQL server and instances of databases which I can manage through mySQLworkbench. I had familiarized myself with SQL about two years ago so half of this was re-learned. Within databases, I dove into schemas and learned how to populate tables within the schemas. The class VehicleDbComm.java is design to setup a connection to the database from the Eclipse. From here specific queries will be writing to do things such as display data for a specific vehicle(s) and also be able to update the data whenever the user wishes.
+
+At the moment of writing this, I have thought about splitting the table I’ve created in mySQL into several smaller tables; I’ll have to see if there are any advantages to this.
+<br>
+<br>
+    <b>12/30/21 update:</b><br>
+
+DAO’s are written for each the user and the vehicle object with CRUD operations.
+<br>
+<br>
+    <b>3/18/22 update:</b><br>
+
+After learning Hibernate for object relational mapping between Java and mySQL, I've configured my entity classes with annotations that is connected to my database. More on this in the changelog.
+
+    Frontend/Visuals
+
+One idea is to separate the methods by search and update/edit.
+
+Search function ideas: -Print all vehicles in DB -Look up by VIN -Look up by category -Combining more than one category -Use some kind of data structure to store each search category and use a function to convert it into a query
+
+Update function ideas: -Use VIN to update a specific vehicle
+<br>
+<br>
+    <b>12/30/21 update:</b><br>
+
+Integrating code into the view layer using JSP displays all data from both tables.
+<br>
+<br>
+    <b>3/18/22 update:</b><br>
+
+I am still employing the use of JSPs for my view layer with the help of CSS to help my visuals go a bit further. This process included figuring out which view pages were necessary, whether it'd be reading information or form submission, I also had to configure these alongside the code in my Controller class.
+<br>
+<br>
+    <b>Furthering the project (ideas):</b><br>
+
+-Use (scraping) to utilize a function to grab the (first) image of the car when description is entered (i.e. “black 1991 Honda Civic”) -Embed to a website -Create graphics for application; find out how to incorporate images (with javaFX?)
+
+I’m realizing the redundancy of creating a vehicle object and having a database. Perhaps I can store the vehicle objects in a data structure and use them to somehow make my program more efficient? Maybe having “two copies” of the same data can provide some insurance incase the database server goes down/is offline.
+
+How to deploy application online.
+
+<br>
+<br>
+Changelogs
+<br>
+<br>
+    <b>11/10/21:</b><br>
+
+Up until now, I haven’t been documenting the changes and ideas chronologically. I will be doing so moving forward to track my progress in detail.
+
+I have been refining the Vehicle class this week to ensure type compatibility when writing to the database and the current structure/complexity of the object is satisfactory for now.
+
+I have established that there will be a separate client file that will call the methods from the database communication file. There are many similarities between methods written for the query methods (especially the search methods). Adding features such as ordering data adds a need for another method so I will have to figure out how to refactor parts of the code as I did with the establishConnection() method.
+<br>
+<br>
+    <b>12/30/21:</b><br>
+
+This project has been revamped once again to include user accounts that can be associated with vehicles in the lot. Using JSP and the MVC model, html/css can be used to display data in a web browser so I have writing object models for both the vehicles and the users, which I have created database access layers for each. Another table in the database was created for the users. Launching the now web app on the Tomcat Server lists all user and vehicle details from the database. Its important to note that each time the database reads a user/vehicle, an object is usually returned. Each DAO has CRUD functionality. I am looking to add options and create JSP forms that will enable the client to edit details about the users/vehicles. After this, the controller component is the in line to be created.
+
+The next major goal is to create another table that lists any offers or currently financed vehicle. Also another table for cars that have been sold.
+<br>
+<br>
+    <b>3/8/22:</b><br>
+
+After spending time learning Spring and how to better use Maven, I am able to turn this into a dynamic web MVC application with annotation based configuration. I have started to overhaul a lot of the code in the entity and DAO layers. I have implemented the basic CRUD functions and I am working on connecting the User Account and Finance Record entities to the Vehicle object. More to come...
+<br>
+<br>
+    <b>3/9/22:</b><br>
+
+I have refactored much of the FinanceRecord class so that the loan calculations and fields work the way I desired. For simplicity's sake, the customer will be limited to making monthly payments of exact amounts, this is calculated by the amortization formula A = principal * ((apr * ((1 + apr) ^ termLength)/(((1 + apr) ^ termLength) - 1))).
+<br>
+<br>
+    <b>3/18/22:</b><br>
+
+I've spent a fair amount of time this past week understanding how to further use Hibernate mappings to create relationships between my tables.
+
+Current schema setup: 3 tables: Cars, CustomerAccounts, FinanceRecords Each of these tables are connected to the backend by a DAO layer, and all three of these DAOs pass through a service layer called VehicleSerivce.class
+
+Foreign key setup: financeId in Vehicle is the FK to financeId PK in FinanceRecord, customerId in financeRecord is FK to customerId PK in CustomerAccount.
+
+Vehicle object holds a one-to-one bidirectional relationship with FinanceRecord. Vehicle is the owner object, a FinanceRecord needs a Vehicle to exist.
+
+FinanceRecord holds a many-to-one relationship with CustomerAccount, as one CustomerAccount can finance multiple Vehicles. Therefore, a CustomerAccount holds a OneToMany relationship with FinanceRecord.
+
+Alongside learning the mappings, I have been altering the JSP and CSS files to improve the visuals of the webapp. I have also used Affinity Designer to create svg images headers for each of the JSPs. Most of this week was spent on refining the CustomerAccount components of this project. With most of the groundwork built, I just need to complete integration of the FinanceRecord component, which will probably be the most difficult.
+
+	</p1>
+
+<h3 style="text-align:left"><font size="10"><font face="Futura"><i>Stock Screener REST</i></font></font></h3>
+<p2>
+
+<b>Abstract:</b><br>
+To create a program that takes advantage of some automation to notify the user in real time when a stock hits a certain price. As long as the user has the CLI/GUI running, the dateTime module in Java can be used to periodically retrieve prices. 
+<br>
+
+<ul>
+<li>Tools/Technologies:</li>
+<li>Eclipse IDE + java.net.http + java dateTime</li>
+<li>Maven + Jackson (for JSON)</li>
+<li>Alpha Vantage API</li>
+<li>Excel</li>
+</ul>
 
 
+<b>Notes:</b><br> 
+It could be a good idea to create some sort of watch list using a data structure and looping through the watch list at set times. Most real-time financial data requires a paid-service, but Alpha Vantage is free and the functionality is enough for the purposes of this project. I am not expecting the Alpha Vantage API to retrieve data with accuracy of under a minute.
+
+
+<b>Phase 1:</b><br> 
+Establishing a connection to the Alpha Vantage API and being able to grab the stock price of any ticker symbol.
+
+<b>New things I learned:</b><br> 
+- Parsing JSON files and accessing stock data through JSON file structure. 
+- API requests: most common are GET, POST, PATCH, PUT, DELETE
+- Object serialization/deserialization
+- Maven and XML
+<br>
+<br>
+<b>11/17/21 update:</b><br>
+It has been a few weeks since I have touched on this project but I have been looking for a way to parse the JSON files. After doing a bit of research, it came down to Jackson and GSON, because of Jackson’s alleged speed edge, Jackson seems to be the better choice. Now how do I go about installing Jackson? This led me to learning more about Maven and ultimately installing it. 
+<br>
+<br>
+After turning the JSON object into a Java Map, I was able to understand the structure of the data which is boiled down to two components: 1) The meta data, 2) The time series. From here, I wanted to understand what was best for displaying and recording the data offered by the JSON output. At this moment, I am trying to turn the time series data into a single array. 
+<br>
+<br>
+Idea: Mapping timestamps to their respective data
+<br>
+<br>
+
+<b>Phase 2: ?</b><br> 
+
+
+<br>
+<br>
+<b>Furthering the project (ideas):</b><br>
+
+	</p2>
 
 
 
