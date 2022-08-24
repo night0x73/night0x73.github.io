@@ -2,15 +2,16 @@
 <html>
 	<head>
 	<title>projects.</title>
-	<link rel="stylesheet" href="https://ghostofstarman.github.io/css/projectscss.css">	
+	<link rel="stylesheet" href="https://ghostofstarman.github.io/css/projectscss.css">
 	</head>
 
 	<body>
 	<!-----------------------------------------------------------------------------------------------------> 
-	<h1 style="text-align:left"><font size="33"><font face="Futura">Projects.</font></font></h1>
+	<h1 style="text-align:left"><font size="7"><font face="Futura">Projects.</font></font></h1>
+	<a href="https://ghostofstarman.github.io/">HOME</a>
 
 	<div class="text1">
-	<h2 style="text-align:left"><font size="10"><font face="Futura"><i>Vehicle Inventory Management System MVC</i></font></font></h2>
+	<h2 style="text-align:left"><font size="5"><font face="Futura">Vehicle Inventory Management System MVC</font></font></h2>
 	<p1>
 	<b>Background:</b> <br>After graduating college, I started to relearn Python and Java. This project started as a Python app that ran through the IDE console and stored data in an excel spreadsheet. My desire to learn backend development and proficiency in Java led me to changing the language this app was written in. After learning about the MVC design pattern, I was able to produce the model and view components in Java, but my grasp on Controllers (HttpSerlvet specicially) wasn't so great, so I decided to learn Spring in order to make my application more robust and modular. This is by far the largest software project I've worked on as a programmer, but I hope to grow and eventually use this knowledge in the industry.
 	<br>
@@ -19,7 +20,7 @@
 <b>Abstract:</b> <br>To create a program that manages vehicle inventory data for a car dealership. This project teaches me about Java development at the enterprise level by implementing technologies offered by the Spring project. I am focusing on the Model-View-Controller design pattern with interactions between three main entities (Vehicle, CustomerAccount, FinanceRecords). As entities are added to this project, especially ones with relationships with existing ones, complexity grows at a nonlinear rate. Due to the benefits of dependency injection and the annotation-based configuration magic offered by Spring, users of this application have free control over data input.
 <br>
 <br>
-Tools/Technologies:
+<b>Tools/Technologies:</b>
 	
 	<ul>
     <li>IDE: Eclipse</li>
@@ -54,7 +55,7 @@ A user class is created. This may be refactored to 'Customer' later. This entity
 
 This has been refactored to 'CustomerAccounts'.<br>
 
-<b>CustomerAccount Fields:</b><br>
+<i><b>CustomerAccount Fields:</b></i>
 
 customerId (int) Username (String) Password (String) FirstName (String) LastName (String) emailAddress (String) mailingAddress (String) phoneNumber (int) financedVehicles (FinanceRecord
 <br>
@@ -63,8 +64,7 @@ customerId (int) Username (String) Password (String) FirstName (String) LastName
 
 A FinanceRecord class has been in the works for some time but I needed to figure out how to integrate its functionalities with Vehicle and CustomerAccount classes. One of the more challenging parts was to determine how certain fields of the FinanceRecord object would affect other internal fields simultaneously. Over time, I figured it'd be best to use an amortization formula for scheduled payments and (at this time) omit the ablity to make early payments for simplicity.
 <br>
-<br>
-<b>FinanceRecord Fields:</b><br>
+<i><b>FinanceRecord Fields:</b></i><br>
 
 financeId (int) creditScore (int) termLength (int) installmentsPaid (int) condition (String) vehicleIdNumber (String) apr (double) vehiclePrice (double) downPayment (double) balance (double) monthlyPaymentAmount (double) paidOff (boolean) vehicle (Vehicle) customerAccount (CustomerAccount)
 <br>
@@ -116,7 +116,7 @@ How to deploy application online.
 
 <br>
 <br>
-Changelogs
+<font size="4"><i>Changelogs</i></font>
 <br>
 <br>
     <b>11/10/21:</b><br>
@@ -161,18 +161,30 @@ Alongside learning the mappings, I have been altering the JSP and CSS files to i
 
 	</p1>
 
-<h3 style="text-align:left"><font size="10"><font face="Futura"><i>Stock Screener REST</i></font></font></h3>
-<p2>
-
-<b>Abstract:</b><br>
-To create a program that takes advantage of some automation to notify the user in real time when a stock hits a certain price. As long as the user has the CLI/GUI running, the dateTime module in Java can be used to periodically retrieve prices. 
+<br>
+<br>
+<br>
 <br>
 
+<h3 style="text-align:left"><font size="5"><font face="Futura">Stock Screener REST</font></font></h3>
+<p2>
+
+<b>Background/Abstract:</b><br>
+To create a stock screening program that takes advantage of automation to notify the user in real time when a stock hits a certain price. 
+<br>
+<br>
+<b>Background:</b><br>
+As a hobbyist trader myself, I got tired of constantly checking my watchlist. This program seeks to solve that problem. Now, I'm neither a frequent trader, nor do I invest in quantities a seasoned trader would. The simplicity of this program supports the aforementioned notion. On to the process. Initially, a public API such as Alpha Vantage or Yahoo_fin is used to retrieve real-time stock prices. This data is processed by a Python script, which will feed into the database. As long as the scheduled Cron task is active, the system will periodically retrieve prices at set time intervals. Having stored the data in MySQL, Spring Boot is used to build a REST service that will feed into an in-browser stock screener.
+<br>
+<br>
+<b>Tools/Technologies:</b>
 <ul>
-<li>Tools/Technologies:</li>
 <li>Eclipse IDE + java.net.http + java dateTime</li>
-<li>Maven + Jackson (for JSON)</li>
-<li>Alpha Vantage API</li>
+<li>Spring Boot + Maven</li>
+<li>Python</li>
+<li>MySQL + MySQL Workbench</li>
+<li>Jackson (for JSON)</li>
+<li>Alpha Vantage/Yahoo_fin API</li>
 <li>Excel</li>
 </ul>
 
@@ -182,37 +194,49 @@ It could be a good idea to create some sort of watch list using a data structure
 <br>
 <br>
 <b>Phase 1:</b><br> 
-Establishing a connection to the Alpha Vantage API and being able to grab the stock price of any ticker symbol.
+Establishing a connection to the Alpha Vantage API/Yahoo_fin and being able to grab the stock price of any ticker symbol.
 <br>
 <br>
 <b>New things I learned:</b><br> 
-- Parsing JSON files and accessing stock data through JSON file structure. 
-- API requests: most common are GET, POST, PATCH, PUT, DELETE
-- Object serialization/deserialization
-- Maven and XML
+	<ul>
+    <li>Parsing JSON files and accessing stock data through JSON file structure. </li>
+    <li>API requests: most common are GET, POST, PATCH, PUT, DELETE</li>
+    <li>Object serialization/deserialization</li>
+    <li>Database: MySQL + MySQLWorkbench, JDBC</li>
+    <li>Server: Apache Tomcat</li>
+    <li>Maven and XML</li>
+	</ul>
+
+Idea: Mapping timestamps to their respective data in the database.
+<br>
+<br>
+
+<b>Phase 2: Using SQL qeuries within the Python script to store data in the database.</b><br><br> 
+
+<b>Phase 3: Creating a entity model for a stock ticker. Employing the MVC pattern in Spring Boot and creating the REST service.</b><br><br> 
+
+<b>Phase 4: Feed REST service into frontend.</b><br> 
+
+
+<br>
+<b>Furthering the project (ideas):</b><br><br>
+<font size="4"><i>Changelogs</i></font>
+
 <br>
 <br>
 <b>11/17/21 update:</b><br>
-It has been a few weeks since I have touched on this project but I have been looking for a way to parse the JSON files. After doing a bit of research, it came down to Jackson and GSON, because of Jackson’s alleged speed edge, Jackson seems to be the better choice. Now how do I go about installing Jackson? This led me to learning more about Maven and ultimately installing it. 
+It has been a few weeks since I have touched on this project but I have been looking for a way to parse the JSON files. After doing a bit of research, it came down to Jackson and GSON, because of Jackson’s alleged speed edge, Jackson seems to be the better choice. Now how do I go about installing Jackson? This led me to learning more about Maven and ultimately installing it.
 <br>
 <br>
 After turning the JSON object into a Java Map, I was able to understand the structure of the data which is boiled down to two components: 1) The meta data, 2) The time series. From here, I wanted to understand what was best for displaying and recording the data offered by the JSON output. At this moment, I am trying to turn the time series data into a single array. 
-<br>
-<br>
-Idea: Mapping timestamps to their respective data
-<br>
-<br>
-
-<b>Phase 2: ?</b><br> 
-
-
-<br>
-<br>
-<b>Furthering the project (ideas):</b><br>
-
 	</p2>
 		</div>
-
+ <br>
+ <br>
+ <a href="#">TOP</a>
+ <br>
+ <br>
+©2022
 
 
 </body></html>

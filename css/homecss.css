@@ -1,25 +1,12 @@
-
-.abouttext{
-	font-family: "Helvetica", sans-serif;
-	width: 85%;
-}
-
-p{
-	text-indent: 15px;
-}
-
 a:link, a:visited {
-  background-color: midnightblue;
-  color: white;
-  padding: 10px 15px;
+  color: midnightblue;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 
 a:hover, a:active {
-  background-color: royalblue;
-  color: white;
+  color: royalblue;
 }
 
 body{
