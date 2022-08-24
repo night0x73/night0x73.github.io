@@ -25,6 +25,7 @@ Files & directories:
 - BlogLink
 - CSS (folder for CSS files)
 - JS (folder for JavaScript files)
+- about
 - README.md
 
 Misc. Notes:
