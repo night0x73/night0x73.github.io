@@ -12,20 +12,20 @@ Description:
 This is built to be my personal website, a portfolio of my tech creations, and a general blog to document my growth as a programmer. 
 
 Tools/Resources:
-HTML/CSS
-JavaScript
-Shell Scripting
-~~AWS EC2 + S3 for hosting~~
-Google Domains
+- HTML/CSS
+- JavaScript
+- Shell Scripting
+- ~~AWS EC2 + S3~~ GitHub pages for hosting
+- Google Domains
 
 Files & directories:
-index.html
-ProjectsLink
-DesignLink
-BlogLink
-CSS (folder for CSS files)
-JS (folder for JavaScript files)
-README.txt
+- index.html
+- ProjectsLink
+- DesignLink
+- BlogLink
+- CSS (folder for CSS files)
+- JS (folder for JavaScript files)
+- README.md
 
 Misc. Notes:
 N/A
