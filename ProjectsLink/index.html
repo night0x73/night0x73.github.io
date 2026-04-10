@@ -33,7 +33,7 @@
 
 <br>
 
-<b>Entities/Models:</b><br>
+<b>I) <i>ENTITIES/MODELS:</i></b><br>
 
 The fields of the object contain data that is relevant to the consumer. These fields are to be stored in the database. Here, basic principles of OOP such as encapsulation with the get and set methods are employed. Because the object has so many fields, I found that using the creational builder design pattern would help simply and organize the instantiation of the vehicle object. 3/8/22 update: I've found that because Spring's dependency injection offers inversion of control, the components of the builder pattern within the Vehicle class may be unecessary.
 
@@ -43,33 +43,30 @@ The fields of the object contain data that is relevant to the consumer. These fi
 
 year (int) mileage (int) vehicleIdNumber(String) make (String) model(String) condition(String) interiorColor(String) exteriorColor(String) titleStatus (String) drivetrainType (String) transmissionType (String) fuelType (String) price (double)
 
-<br>
-<br>
-    <b>12/30/21 update:</b><br>
+	<ul>
+    <li><b>12/30/21 update:</b>
 
-A user class is created. This may be refactored to 'Customer' later. This entity is used to keep track of customers who have purchased/financed a vehicle.
+A user class is created. This may be refactored to 'Customer' later. This entity is used to keep track of customers who have purchased/financed a vehicle.</li>
 
-<br>
-<br>
-    <b>3/8/22 update:</b><br>
 
-This has been refactored to 'CustomerAccounts'.<br>
+    <li><b>3/8/22 update:</b>
+
+This has been refactored to 'CustomerAccounts'.
 
 <i><b>CustomerAccount Fields:</b></i>
 
-customerId (int) Username (String) Password (String) FirstName (String) LastName (String) emailAddress (String) mailingAddress (String) phoneNumber (int) financedVehicles (FinanceRecord
-<br>
-<br>
-    <b>3/18/22 update:</b><br>
+customerId (int) Username (String) Password (String) FirstName (String) LastName (String) emailAddress (String) mailingAddress (String) phoneNumber (int) financedVehicles (FinanceRecord) </li>
+	<li><b>3/18/22 update:</b><br>
 
 A FinanceRecord class has been in the works for some time but I needed to figure out how to integrate its functionalities with Vehicle and CustomerAccount classes. One of the more challenging parts was to determine how certain fields of the FinanceRecord object would affect other internal fields simultaneously. Over time, I figured it'd be best to use an amortization formula for scheduled payments and (at this time) omit the ablity to make early payments for simplicity.
 <br>
 <i><b>FinanceRecord Fields:</b></i><br>
 
 financeId (int) creditScore (int) termLength (int) installmentsPaid (int) condition (String) vehicleIdNumber (String) apr (double) vehiclePrice (double) downPayment (double) balance (double) monthlyPaymentAmount (double) paidOff (boolean) vehicle (Vehicle) customerAccount (CustomerAccount)
-<br>
-<br>
-    <b>Databasing:</b><br>
+</li>
+</ul>
+
+    <b>II) <i>DATABASING:</i></b><br>
 
 Using jdbc as the driver connector for mySQL, it becomes possible to permanentize and update the states of the vehicle object.
 
@@ -77,46 +74,57 @@ Here, I learned how to set up the mySQL server and instances of databases which 
 
 At the moment of writing this, I have thought about splitting the table I’ve created in mySQL into several smaller tables; I’ll have to see if there are any advantages to this.
 <br>
-<br>
-    <b>12/30/21 update:</b><br>
+<ul>
+    <li><b>12/30/21 update:</b>
 
-DAO’s are written for each the user and the vehicle object with CRUD operations.
-<br>
-<br>
-    <b>3/18/22 update:</b><br>
+DAO’s are written for each the user and the vehicle object with CRUD operations.</li>
+<li><b>3/18/22 update:</b><br>
 
-After learning Hibernate for object relational mapping between Java and mySQL, I've configured my entity classes with annotations that is connected to my database. More on this in the changelog.
-
-    Frontend/Visuals
+After learning Hibernate for object relational mapping between Java and mySQL, I've configured my entity classes with annotations that is connected to my database. More on this in the changelog.</li></ul>
 
 One idea is to separate the methods by search and update/edit.
 
-Search function ideas: -Print all vehicles in DB -Look up by VIN -Look up by category -Combining more than one category -Use some kind of data structure to store each search category and use a function to convert it into a query
+Search function ideas:
+<ul> 
+<li>Print all vehicles in DB</li>
+<li>Look up by VIN</li>
+<li>Look up by category</li>
+<li>Combining more than one category</li>
+<li>Use some kind of data structure to store each search 
+<br>category and use a function to convert it into a query</li>
+</ul>
 
-Update function ideas: -Use VIN to update a specific vehicle
-<br>
-<br>
-    <b>12/30/21 update:</b><br>
+Update function ideas: 
+<ul>
+<li>Use VIN to update a specific vehicle</li>
+</ul>
 
-Integrating code into the view layer using JSP displays all data from both tables.
-<br>
-<br>
-    <b>3/18/22 update:</b><br>
+<b>III) <i>FRONTEND/VISUALS:</i></b>
+<ul>
+    <li><b>12/30/21 update:</b><br>
+
+Integrating code into the view layer using JSP displays all data from both tables.</li>
+
+    <li><b>3/18/22 update:</b><br>
 
 I am still employing the use of JSPs for my view layer with the help of CSS to help my visuals go a bit further. This process included figuring out which view pages were necessary, whether it'd be reading information or form submission, I also had to configure these alongside the code in my Controller class.
-<br>
-<br>
+</li>
+</ul>
+
     <b>Furthering the project (ideas):</b><br>
+    <ul>
+    	<li>Use (scraping) to utilize a function to grab the (first) image of the car when description is entered (i.e. “black 1991 Honda Civic”)</li>
+    	<li>Embed to a website</li>
+    	<li>Create graphics for application; find out how to incorporate images (with javaFX?)</li>
+    </ul>
 
--Use (scraping) to utilize a function to grab the (first) image of the car when description is entered (i.e. “black 1991 Honda Civic”) -Embed to a website -Create graphics for application; find out how to incorporate images (with javaFX?)
-
-I’m realizing the redundancy of creating a vehicle object and having a database. Perhaps I can store the vehicle objects in a data structure and use them to somehow make my program more efficient? Maybe having “two copies” of the same data can provide some insurance incase the database server goes down/is offline.
-
-How to deploy application online.
+<i>thought: </i>I’m realizing the redundancy of creating a vehicle object and having a database. Perhaps I can store the vehicle objects in a data structure and use them to somehow make my program more efficient? Maybe having “two copies” of the same data can provide some insurance incase the database server goes down/is offline.
+<br><br>
+Ultimately, deploying this application online will be its moonlanding.
 
 <br>
 <br>
-<font size="4"><i>Changelogs</i></font>
+<font size="5"><i>CHANGELOGS:</i></font>
 <br>
 <br>
     <b>11/10/21:</b><br>
